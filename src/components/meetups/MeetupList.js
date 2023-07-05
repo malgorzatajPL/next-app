@@ -2,12 +2,13 @@ import MeetupItem from './MeetupItem';
 import classes from './MeetupList.module.css';
 
 function MeetupList(props) {
+  console.log(props);
   return (
     <ul className={classes.list}>
       {props.meetups.map((meetup) => (
         <MeetupItem
           id={meetup.id}
-          key={meetup.index}
+          key={meetup.id}
           email={meetup.email}
           image={meetup.image}
           name={meetup.name}

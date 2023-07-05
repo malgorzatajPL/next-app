@@ -15,7 +15,6 @@ export function FavoritesContextProvider(props) {
       return [prevUserFavorites.concat(favoriteMeetup)];
     });
   }
-
   function removeFavoriteHandler(meetupId) {
     setUserFavorites((prevUserFavorites) => {
       return prevUserFavorites.filter((meetup) => meetup.id !== meetupId);
@@ -27,14 +26,13 @@ export function FavoritesContextProvider(props) {
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
-    addFavorite: addFavoritesHandler,
-    removeFavorite: removeFavoriteHandler,
-    itemIsFavorite: itemIsFavoriteHandler,
+    addFavorites: (favoriteMeetup) => addFavoritesHandler(favoriteMeetup),
+    removeFavorite: (meetupId) => removeFavoriteHandler(meetupId),
+    itemIsFavorite: (meetupId) => itemIsFavoriteHandler(meetupId),
   };
-
   return (
-    <FavoritesContext.Provider>
-      {props.children} value={context}
+    <FavoritesContext.Provider value={context}>
+      {props.children}
     </FavoritesContext.Provider>
   );
 }

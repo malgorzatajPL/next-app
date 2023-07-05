@@ -18,6 +18,7 @@ function MeetupItem(props) {
         image: props.image,
         email: props.email,
       });
+      return;
     }
   }
   return (
